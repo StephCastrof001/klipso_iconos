@@ -28,14 +28,18 @@ export function getComponentManifests(): ComponentManifest[] {
 // Default component creators
 const defaultCreators: Record<string, any> = {}
 
-export function createComponentRegistry(): {
+type ComponentRegistry = {
   createComponent: (componentType: string, props: any) => any
   getManifests: () => ComponentManifest[]
   register: (name: string, creator: ComponentCreator) => void
-} {
+  getComponentCreator: (name: string) => ComponentCreator | undefined
+  getCreators: () => Record<string, any>
+}
+
+export function createComponentRegistry(): ComponentRegistry {
   return {
-    register,
-    getComponentManifests: () => getComponentManifests(),
+    register: registerComponent,
+    getManifests: getComponentManifests,
     getComponentCreator,
     getCreators: () => defaultCreators,
     createComponent: (componentType: string, props: any) => {
@@ -48,11 +52,14 @@ export function createComponentRegistry(): {
   }
 }
 
+export const registry = createComponentRegistry()
+
 export const {
   createComponent,
-  getComponentManifests,
+  getManifests: getComponentManifests,
+  register: registerComponent,
   getComponentCreator,
-  register: registerComponent
-} = createComponentRegistry()
+  getCreators
+} = registry
 
 export { componentRegistry }

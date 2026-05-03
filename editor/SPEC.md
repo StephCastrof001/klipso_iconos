@@ -6,18 +6,18 @@
 
 | Type | Constant | ComponentType | Description |
 |------|----------|---------------|-------------|
-| Section | `SECTION` | `SECTION` | Nivela contenedor (layout principal) |
-| Column | `COLUMN` | `COLUMN` | Columna para grid/flex layouts |
+| Section | `SECTION` | `SECTION` | Top-level container (main layout) |
+| Column | `COLUMN` | `COLUMN` | Column for grid/flex layouts |
 | Row | `ROW` | `ROW` | Flex row container |
-| Detached | `DETACHED` | `WRAPPER_DETACHED` | Contenedor para widgets detached (popups) |
+| Detached | `DETACHED` | `WRAPPER_DETACHED` | Container for detached widgets (popups) |
 
 ### Basic Elements
 
 | Type | Constant | ComponentType | Manifest | Description |
 |------|----------|---------------|----------|-------------|
-| Text | `TEXT` | `TEXT` | `SysTextComponent` | Texto/HTML estático dinámico |
-| Button | `BUTTON` | `BUTTON` | `SysButtonComponent` | Botón con click actions |
-| Image | `IMAGE` | `IMAGE` | `SysImageComponent` | Imagen de URL o Upload S3 |
+| Text | `TEXT` | `TEXT` | `SysTextComponent` | Static/dynamic text/HTML |
+| Button | `BUTTON` | `BUTTON` | `SysButtonComponent` | Button with click actions |
+| Image | `IMAGE` | `IMAGE` | `SysImageComponent` | Image from URL or S3 upload |
 | HTML | `HTML` | `HTML` | `SysHtmlComponent` | HTML inline |
 
 ### Form Components
@@ -326,8 +326,8 @@ interface AdaptiveStyleRule {
     marginRightEnabled?: boolean
     paddingTopEnabled?: boolean
     paddingBottomEnabled?: boolean
-    paddingLeftEnabled?: true
-    paddingRightEnabled?: true
+    paddingLeftEnabled?: boolean
+    paddingRightEnabled?: boolean
     textAlign?: string
     color?: string
     fontSize?: string
@@ -363,7 +363,7 @@ interface ComponentManifest {
   propertyPaneModel?: {
     content: any[]
   }
-  i18nPropPaths?: [string]
+  i18nPropPaths?: string[]
   metaDescription: {
     icon: string
     label: { [lang: string]: string }
@@ -476,7 +476,7 @@ interface EditorEvent {
 ### Editor Methods (Public API)
 
 ```typescript
-class.EditorAPI {
+class EditorAPI {
   // Initialize
   init(config: EditorConfig, onLoaded?: () => void, onError?: () => void): void
   destroy(): void
@@ -617,15 +617,15 @@ Default: Desktop | Mobile (2 breakpoints)
 
 ### S3 Path Format
 
-```
+````text
 "s3://bucket/folder/path/to/file.jpg"
-```
+````
 
 Decoded to full URL:
 
-```
+````text
 "https://cdn.example.com/static/bucket/folder/path/to/file.jpg"
-```
+````
 
 ### Image Sources
 
@@ -703,6 +703,7 @@ interface TriggerPayload {
 
 ## File Structure (Final)
 
+```text
 ```
 builder/
 ├── backend/editor/

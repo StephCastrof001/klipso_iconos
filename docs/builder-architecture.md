@@ -12,7 +12,7 @@ El Claspo Editor SDK se inicializa con una configuración extensa que incluye:
 - **Available Components Panel**: Definición de qué componentes mostrar en el panel izquierdo
 - **User Info/Context**: Identidad del usuario y preferencias de idioma
 - **Static Resources URL**: Base para assets (imágenes, fuentes)
-- **Notification Handlers**: Callbacks para mensajees (success/error/warning/info)
+- **Notification Handlers**: Callbacks para mensajes (success/error/warning/info)
 - **Proyecto Configs**: Configuraciones globales (pausas, países, ab-testing)
 - **Teaser/Localization/Google Fonts**: Opcionalidades avanzadas
 
@@ -139,7 +139,7 @@ El editor produce principalmente dos tipos de datos:
 └─────────────────────┘   │   └────┘   │   └──────────┘   │
                           │            │                   │
 ┌─────────────────────────┼────────────┤   ┌──────────────┐ │
-│         Backed API      │            │   │  Asset       │ │
+│         Backend API      │            │   │  Asset       │ │
 │     (Fastify Service)  │            │   │  Storage (S3)│ │
 │                        │            │   │              │ │
 └────────────────────────┘            │   └──────────────┘ │
@@ -282,7 +282,7 @@ builder/
                 "content": { "text": "Hello World" },
                 "adaptiveStyles": {
                   "desktop": [
-                    { "element": "root", "styleAttributes": { "width": "100%" } },
+                    { "element": "host", "styleAttributes": { "width": "100%" } },
                     { 
                       "element": "text-content", 
                       "styleAttributes": { "color": "#333", "fontSize": "16px" } 
@@ -308,8 +308,8 @@ builder/
     },
     {
       "environment": "MOBILE",
-      "widgets": [ ... ] // Misma estructura, styles adaptados
+      "widgets": [ ... ]
     }
   ]
-}
+} // Misma estructura, styles adaptados
 ```

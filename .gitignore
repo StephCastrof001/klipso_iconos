@@ -6,3 +6,10 @@ dist/
 .DS_Store
 recon/assets/  
 worktrees/
+popwola/.git/
+deer-flow/.git/
+claspo-sdk/.git/
+node_modules/
+popwola/
+deer-flow/
+claspo-sdk/

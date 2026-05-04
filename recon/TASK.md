@@ -1,5 +1,7 @@
 # MISIÓN: ASPIRADORA CLASPO
 
+**LEGAL NOTICE**: All reverse-engineering activities must have explicit authorization, comply with applicable laws and terms of service, and must not involve distribution of proprietary assets or credentials.
+
 ## Objetivo
 Reverse engineering completo de Claspo para replicar su producto.
 
@@ -20,7 +22,7 @@ Reverse engineering completo de Claspo para replicar su producto.
 - [ ] Social proof (notification bubbles, counters)
 
 ## Credenciales
-Ver .env (ignorado por git — nunca commitear)
+Ver .env (ignorado por git — nunca commitear). Maintain a redacted `.env.example` alongside the ignored `.env` for documentation. Explicitly redact any captured secrets in JSON/logs/artifacts before committing. Apply least-privilege scoping for all credentials and use secret scanning/CI checks to prevent accidental exposure.
 
 ## Output esperado
 -  — JSONs crudos de cada template

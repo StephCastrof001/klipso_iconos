@@ -16,7 +16,7 @@ export interface ComponentManifest {
   propertyPaneModel?: {
     content: any[]
   }
-  i18nPropPaths?: [string]
+  i18nPropPaths?: string[]
 }
 
 export interface AppearanceModel {

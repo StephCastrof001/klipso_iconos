@@ -1,5 +1,3 @@
-import React from 'react'
-
 interface WidgetDefinition {
   id: string
   type: string
@@ -49,19 +47,21 @@ interface DocumentStoreConfig {
   onSave: (model: any) => Promise<void>
 }
 
-const documentState = {
-  widgetTree: [] as WidgetDefinition[],
-  selectedWidgetId: null as string | null,
+const documentState: DocumentState = {
+  widgetTree: [],
+  selectedWidgetId: null,
   documentModel: {},
-  appearances: []
+  appearances: [],
+  errors: [],
+  isSaving: false,
+  saveSuccess: false,
+  isSavingSuccess: false,
+  isPublishing: false
 }
-
-let actionsRef = { ...actions }
 
 function createActions() {
   return {
     setSelected: (id: string | null) => {
-      actionsRef.selectedWidgetId = id
       documentState.selectedWidgetId = id
     },
     setWidget: (widgetId: string, updates: any) => {
@@ -104,6 +104,7 @@ function createActions() {
 }
 
 const actions = createActions()
+const actionsRef = actions
 
 const subscribe = (callback: (state: DocumentState) => any) => {
   return () => {}
